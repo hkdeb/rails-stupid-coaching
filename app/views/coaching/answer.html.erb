@@ -1,0 +1,45 @@
+<h1 style="text-align: center; font-weight: bolder; color: #336699"> Your Coach</h1>
+<br>
+<br>
+<h2 style="text-align: center; font: 30px arial; font-weight: lighter">
+  <%= @query.capitalize %>
+</h4>
+<h3 style="text-align: center; font: 20px arial; color: #666">
+  - You
+</h3>
+<br>
+<h2 style="text-align: center; font: 30px arial; font-weight: lighter">
+<%
+  def coach_answer(query)
+    if query.downcase == "i am going to work right now!"
+      "Great!!"
+    elsif query.end_with?("?")
+      "Silly question, go work."
+    else
+      "I don't care, go work."
+    end
+  end
+
+  def coach_answer_enhanced(query)
+    answer = coach_answer(query)
+    if answer != ""
+      if query.upcase == query
+        "I can feel your motivation! #{answer}"
+      else
+        answer
+      end
+    else
+      ""
+    end
+  end
+  %>
+  <!-- PRINT ANSWER -->
+  <%= coach_answer_enhanced(@query) %>
+  </h2>
+  <h3 style="text-align: center; font: 20px arial; color: #666">
+  - Stupid Coach
+</h3>
+
+<div style="text-align:center; padding-top:50px">
+<%= link_to 'Ask another question', ask_path, {:class => "btn btn-primary"}%>
+</div>
